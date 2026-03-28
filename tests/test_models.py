@@ -3,6 +3,7 @@ from src.task_errors import InvalidStatusError,InvalidPriorityError
 import pytest
 
 def test_task_model():
+    """ Тест модели"""
     task = Task(payload={"key1":"value1","key2":"value2","key3":"value3"})
     assert task.payload == {"key1":"value1","key2":"value2","key3":"value3"}
     assert task.priority == 3

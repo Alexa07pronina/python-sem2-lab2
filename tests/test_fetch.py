@@ -11,6 +11,7 @@ class FakeSource:
     pass
 
 def test_fetch_tasks():
+    """ Тест функции приема задач на валидность источника"""
     source_true=TestSource()
     source_fake=FakeSource()
     tasks=fetch_tasks(source_true)
