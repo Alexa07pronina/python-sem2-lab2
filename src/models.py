@@ -1,6 +1,5 @@
 from typing import Any
 from datetime import datetime
-from enum import Enum
 import uuid
 from src.task_errors import InvalidPriorityError,InvalidStatusError
 
@@ -13,7 +12,7 @@ class TaskStatus:
     ALL = {PENDING, IN_PROGRESS, COMPLETED, FAILED}
 
 class PriorityDescriptor:
-    """ Деструктор для приоритета задачи"""
+    """ Дескриптор для приоритета задачи"""
     def __set_name__(self, owner, name):
         self.storage_name=f'_{name}'
 
@@ -29,7 +28,7 @@ class PriorityDescriptor:
         setattr(obj,self.storage_name,value)
 
 class StatusDescriptor:
-    """ Деструктор для статуса задачи"""
+    """ Дескриптор для статуса задачи"""
     def __set_name__(self, owner, name):
         self.storage_name=f'_{name}'
     def __get__(self,obj,objtype=None):
@@ -50,7 +49,7 @@ class Task:
     priority= PriorityDescriptor()
     status= StatusDescriptor()
 
-    def __init__(self, payload: dict[str, Any]=None,priority:int =3):
+    def __init__(self, payload: dict[str, Any]=None,priority:int = 3):
         self._id = str(uuid.uuid4())
         self.payload = payload or {}
         self.priority = priority
